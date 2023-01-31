@@ -19,6 +19,19 @@ class UserModel(models.Model):
     name = models.CharField(max_length=250, blank=False, null=False)
     email = models.EmailField(max_length=250, blank=False, null=False)
     password = models.CharField(max_length=50, blank=False, null=False)
+    user_items = models.ForeignKey("ItemsModel", related_name="items_ids", on_delete=models.CASCADE, default=None)
+    user_video_items = models.ForeignKey(
+        "VideoItemsModel",
+        related_name="video_item_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
+    user_printed_items = models.ForeignKey(
+        "PrintedItemsModel",
+        related_name="printed_item_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
@@ -35,6 +48,19 @@ class LoanerModel(models.Model):
     loaner_name = models.CharField(max_length=250, blank=False, null=False)
     loaner_email = models.EmailField(max_length=150, blank=False, null=False)
     loaner_phone = models.CharField(max_length=20, blank=False, null=False)
+    video_items_loaned = models.ForeignKey(
+        "VideoItemsModel",
+        related_name="video_items_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
+    printed_items_loaned = models.ForeignKey(
+        "PrintedItemsModel",
+        related_name="printed_items_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name = "Loaner"
@@ -46,6 +72,18 @@ class LoanerModel(models.Model):
 class ItemsModel(models.Model):
     item_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     item_type = models.CharField(max_length=50, choices=ITEM_TYPE_CHOICES, blank=False, null=False, default=None)
+    video_items = models.ForeignKey(
+        "VideoItemsModel",
+        related_name="videos_items_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
+    printed_items = models.ForeignKey(
+        "PrintedItemsModel",
+        related_name="prints_items_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
     created_at = models.DateTimeField(default=timezone.now)
     owner_id = models.ForeignKey(UserModel, related_name="user_ids", on_delete=models.CASCADE)
     owner_name = models.ForeignKey(UserModel, related_name="names", on_delete=models.CASCADE)

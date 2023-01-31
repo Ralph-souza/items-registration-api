@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import UserModel, LoanerModel, ItemsModel, VideoItemsModel, PrintedItemsModel
 
-# Register your models here.
+
+admin.site.register(UserModel)
+admin.site.register(LoanerModel)
+admin.site.register(ItemsModel)
+admin.site.register(VideoItemsModel)
+admin.site.register(PrintedItemsModel)
