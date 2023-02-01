@@ -15,23 +15,10 @@ from .choices import (
 
 
 class UserModel(models.Model):
-    user_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    user_id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=250, blank=False, null=False)
     email = models.EmailField(max_length=250, blank=False, null=False)
     password = models.CharField(max_length=50, blank=False, null=False)
-    user_items = models.ForeignKey("ItemsModel", related_name="items_ids", on_delete=models.CASCADE, default=None)
-    user_video_items = models.ForeignKey(
-        "VideoItemsModel",
-        related_name="video_item_titles",
-        on_delete=models.CASCADE,
-        default=None
-    )
-    user_printed_items = models.ForeignKey(
-        "PrintedItemsModel",
-        related_name="printed_item_titles",
-        on_delete=models.CASCADE,
-        default=None
-    )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
@@ -43,34 +30,8 @@ class UserModel(models.Model):
         return self.name
 
 
-class LoanerModel(models.Model):
-    loaner_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    loaner_name = models.CharField(max_length=250, blank=False, null=False)
-    loaner_email = models.EmailField(max_length=150, blank=False, null=False)
-    loaner_phone = models.CharField(max_length=20, blank=False, null=False)
-    video_items_loaned = models.ForeignKey(
-        "VideoItemsModel",
-        related_name="video_items_titles",
-        on_delete=models.CASCADE,
-        default=None
-    )
-    printed_items_loaned = models.ForeignKey(
-        "PrintedItemsModel",
-        related_name="printed_items_titles",
-        on_delete=models.CASCADE,
-        default=None
-    )
-    created_at = models.DateTimeField(default=timezone.now)
-
-    class Meta:
-        verbose_name = "Loaner"
-
-    def __str__(self):
-        return self.loaner_name
-
-
 class ItemsModel(models.Model):
-    item_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    item_id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     item_type = models.CharField(max_length=50, choices=ITEM_TYPE_CHOICES, blank=False, null=False, default=None)
     video_items = models.ForeignKey(
         "VideoItemsModel",
@@ -114,8 +75,6 @@ class VideoItemsModel(models.Model):
     launched_at = models.DateTimeField(default=None)
     actor_name = models.CharField(max_length=250, blank=False, null=False)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, blank=False, null=False, default="not_loaned")
-    video_item_loaner = models.ForeignKey(LoanerModel, related_name="loaners_ids", on_delete=models.CASCADE)
-    video_item_loaned_to = models.ForeignKey(LoanerModel, related_name="loaners_names", on_delete=models.CASCADE)
     loaned_since = models.DateTimeField(default=None)
     returned = models.CharField(max_length=50, choices=RETURNED_CHOICES, default="yes")
     returned_at = models.DateTimeField(default=None)
@@ -151,8 +110,6 @@ class PrintedItemsModel(models.Model):
     launched_at = models.DateTimeField(default=None)
     author_name = models.CharField(max_length=250, blank=False, null=False)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, blank=False, null=False, default="not_loaned")
-    printed_item_loaner = models.ForeignKey(LoanerModel, related_name="loaner_ids", on_delete=models.CASCADE)
-    printed_item_loaned_to = models.ForeignKey(LoanerModel, related_name="loaner_names", on_delete=models.CASCADE)
     loaned_since = models.DateTimeField(default=None)
     returned = models.CharField(max_length=50, choices=RETURNED_CHOICES, default="yes")
     returned_at = models.DateTimeField(default=None)
@@ -165,3 +122,29 @@ class PrintedItemsModel(models.Model):
 
     def __str__(self):
         return self.printed_item_title
+
+
+class LoanerModel(models.Model):
+    loaner_id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    loaner_name = models.CharField(max_length=250, blank=False, null=False)
+    loaner_email = models.EmailField(max_length=150, blank=False, null=False)
+    loaner_phone = models.CharField(max_length=20, blank=False, null=False)
+    video_items_loaned = models.ForeignKey(
+        VideoItemsModel,
+        related_name="video_items_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
+    printed_items_loaned = models.ForeignKey(
+        PrintedItemsModel,
+        related_name="printed_items_titles",
+        on_delete=models.CASCADE,
+        default=None
+    )
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        verbose_name = "Loaner"
+
+    def __str__(self):
+        return self.loaner_name
