@@ -31,5 +31,5 @@ class UserModel(models.Model):
         verbose_name = "User"
         ordering = ("created-at",)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.user_name
