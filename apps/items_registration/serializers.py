@@ -1,33 +1,6 @@
 from rest_framework import serializers
 
-from .models import UserModel, LoanerModel, ItemsModel, VideoItemsModel, PrintedItemsModel
-
-
-class UserSerializer(serializers.ModelSerializer):
-    user_items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    user_video_items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    user_printed_items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-
-    class Meta:
-        model = UserModel
-        fields = [
-            "user_id",
-            "name",
-            "email",
-            "user_items",
-            "user_video_items",
-            "user_printed_items",
-            "created_at",
-            "updated_at"
-        ]
-        read_only_fields = (
-            "user_id",
-            "user_items",
-            "user_video_items",
-            "user_printed_items",
-            "created_at",
-            "updated_at"
-        )
+from .models import LoanerModel, ItemsModel, VideoItemsModel, PrintedItemsModel
 
 
 class LoanerSerializer(serializers.ModelSerializer):

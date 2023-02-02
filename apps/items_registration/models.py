@@ -14,22 +14,6 @@ from .choices import (
 )
 
 
-class UserModel(models.Model):
-    user_id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=250, blank=False, null=False)
-    email = models.EmailField(max_length=250, blank=False, null=False)
-    password = models.CharField(max_length=50, blank=False, null=False)
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=timezone.now)
-
-    class Meta:
-        verbose_name = "User"
-        ordering = ("-updated_at",)
-
-    def __str__(self):
-        return self.name
-
-
 class ItemsModel(models.Model):
     item_id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     item_type = models.CharField(max_length=50, choices=ITEM_TYPE_CHOICES, blank=False, null=False, default=None)
@@ -46,8 +30,8 @@ class ItemsModel(models.Model):
         default=None
     )
     created_at = models.DateTimeField(default=timezone.now)
-    owner_id = models.ForeignKey(UserModel, related_name="user_ids", on_delete=models.CASCADE)
-    owner_name = models.ForeignKey(UserModel, related_name="names", on_delete=models.CASCADE)
+    # owner_id = models.ForeignKey(related_name="user_ids", on_delete=models.CASCADE)
+    # owner_name = models.ForeignKey( related_name="names", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "Items"
@@ -79,7 +63,7 @@ class VideoItemsModel(models.Model):
     returned = models.CharField(max_length=50, choices=RETURNED_CHOICES, default="yes")
     returned_at = models.DateTimeField(default=None)
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=None)
+    updated_at = models.DateTimeField(default=None, editable=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Video Items"
@@ -114,7 +98,7 @@ class PrintedItemsModel(models.Model):
     returned = models.CharField(max_length=50, choices=RETURNED_CHOICES, default="yes")
     returned_at = models.DateTimeField(default=None)
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=None)
+    updated_at = models.DateTimeField(default=None, editable=True, null=True, blank=True)
 
     class Meta:
         verbose_name = "Printed Items"

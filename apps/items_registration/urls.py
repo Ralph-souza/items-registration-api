@@ -11,6 +11,7 @@ from .views import (
 app_name = "items_registrations"
 
 router = routers.DefaultRouter()
+
 router.register(r"user", UserViewSet, basename="user")
 router.register(r"loaner", LoanerViewSet, basename="loaner")
 router.register(r"items", ItemsViewSet, basename="items")
