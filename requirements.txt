@@ -10,7 +10,7 @@ coreschema==0.0.4
 coverage==7.1.0
 decorator==5.1.1
 distlib==0.3.6
-Django==3.2.10
+Django==4.1.6
 djangorestframework==3.14.0
 drf-jsonmask==0.3.0
 drf-yasg==1.21.4

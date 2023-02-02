@@ -49,8 +49,18 @@ class VideoItemsModel(models.Model):
         related_name="video_item_types", 
         on_delete=models.CASCADE
     )
-    video_media_type = models.CharField(max_length=250, default="games", choices=VIDEO_MEDIA_TYPE_CHOICES, null=False)
-    video_format_type = models.CharField(max_length=50, default="dvd", choices=VIDEO_MEDIA_FORMAT_CHOICES, null=False)
+    video_media_type = models.CharField(
+        max_length=250,
+        default="games",
+        choices=VIDEO_MEDIA_TYPE_CHOICES,
+        null=False
+    )
+    video_format_type = models.CharField(
+        max_length=50,
+        default="dvd",
+        choices=VIDEO_MEDIA_FORMAT_CHOICES,
+        null=False
+    )
     release_date = models.DateField(default=None, editable=True)
     main_actor = models.CharField(max_length=250, null=False)
     status = models.CharField(max_length=20, default="no", choices=STATUS_CHOICES, null=False)
@@ -65,7 +75,7 @@ class VideoItemsModel(models.Model):
         verbose_name = "Video Items"
         ordering = ("-updated_at",)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.video_item_title
 
 
@@ -105,5 +115,5 @@ class PrintedItemsModel(models.Model):
         verbose_name = "Printed Items"
         ordering = ("-updated_at",)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.printed_item_title
