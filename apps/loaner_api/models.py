@@ -15,12 +15,18 @@ class LoanerModel(models.Model):
         VideoItemsModel,
         default=None,
         related_name="loaner_video_item_titles",
+        editable=True,
+        blank=True,
+        null=True,
         on_delete=models.CASCADE
     )
     loaned_prints = models.ForeignKey(
         PrintedItemsModel,
         default=None,
         related_name="loaner_printed_item_titles",
+        editable=True,
+        blank=True,
+        null=True,
         on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(default=timezone.now)
