@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'apps.items_api',
     'apps.loaner_api',
     'apps.user_api',
-    'apps.items_registration',
 ]
 
 MIDDLEWARE = [
