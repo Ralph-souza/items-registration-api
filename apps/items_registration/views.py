@@ -1,2 +1,0 @@
-from drf_jsonmask.views import OptimizedQuerySetMixin
-from rest_framework import viewsets
