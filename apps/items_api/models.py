@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
 from .choices import (
     ITEM_TYPE_CHOICES,
     VIDEO_MEDIA_TYPE_CHOICES,
@@ -16,12 +15,24 @@ from .choices import (
 class ItemsModel(models.Model):
     item_id = models.AutoField(primary_key=True, null=False)
     item_type = models.CharField(max_length=50, choices=ITEM_TYPE_CHOICES, default="video", null=False)
+    video_items = models.ForeignKey(
+        "VideoItemsModel",
+        default=None,
+        related_name="video_item_titles",
+        on_delete=models.CASCADE
+    )
+    printed_items = models.ForeignKey(
+        "PrintedItemsModel",
+        default=None,
+        related_name="printed_item_titles",
+        on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
 
     class Meta:
         verbose_name = "Items"
-        ordering = ("created_at",)
+        ordering = ("-updated_at",)
 
 
 class VideoItemsModel(models.Model):
