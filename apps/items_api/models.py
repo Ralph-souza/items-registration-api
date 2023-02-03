@@ -27,6 +27,24 @@ class ItemsModel(models.Model):
         related_name="printed_item_titles",
         on_delete=models.CASCADE
     )
+    owner_id = models.ForeignKey(
+        "user_api.UserModel",
+        default=None,
+        related_name="users_ids",
+        editable=True,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
+    owner_name = models.ForeignKey(
+        "user_api.UserModel",
+        default=None,
+        related_name="users_names",
+        editable=True,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
 
@@ -53,6 +71,15 @@ class VideoItemsModel(models.Model):
     release_date = models.DateTimeField(default=None, editable=True)
     main_actor = models.CharField(max_length=250, null=False)
     status = models.CharField(max_length=20, default="no", choices=STATUS_CHOICES, null=False)
+    loaner_name = models.ForeignKey(
+        "loaner_api.LoanerModel",
+        default=None,
+        related_name="video_loaner_names",
+        editable=True,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
     loaned_date = models.DateTimeField(default=None, editable=True)
     returned_status = models.CharField(max_length=50, default=None, choices=RETURNED_CHOICES, blank=True, null=True)
     returned_at = models.DateTimeField(default=None, editable=True)
@@ -86,6 +113,15 @@ class PrintedItemsModel(models.Model):
     edition = models.CharField(max_length=10, blank=True, null=True)
     author = models.CharField(max_length=250, null=False)
     status = models.CharField(max_length=20, default="no", choices=STATUS_CHOICES, null=False)
+    loaner_name = models.ForeignKey(
+        "loaner_api.LoanerModel",
+        default=None,
+        related_name="printed_loaner_names",
+        editable=True,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
     loaned_date = models.DateTimeField(default=None, editable=True)
     returned_status = models.CharField(max_length=50, default=None, choices=RETURNED_CHOICES, blank=True, null=True)
     returned_at = models.DateTimeField(default=None, editable=True)

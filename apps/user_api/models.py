@@ -3,7 +3,7 @@ import uuid
 from django.db import models
 from django.utils import timezone
 
-from apps.items_api.models import ItemsModel, VideoItemsModel, PrintedItemsModel
+from ..items_api.models import (ItemsModel, VideoItemsModel, PrintedItemsModel)
 
 
 class UserModel(models.Model):
@@ -18,7 +18,8 @@ class UserModel(models.Model):
         editable=True,
         blank=True,
         null=True,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE
+    )
     user_video_items = models.ForeignKey(
         VideoItemsModel,
         default=None,
