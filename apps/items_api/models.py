@@ -13,7 +13,7 @@ from .choices import (
 
 
 class ItemsModel(models.Model):
-    item_id = models.AutoField(primary_key=True, null=False)
+    item_id = models.AutoField(primary_key=True, editable=False)
     item_type = models.CharField(max_length=50, choices=ITEM_TYPE_CHOICES, default="video", null=False)
     video_items = models.ForeignKey(
         "VideoItemsModel",
@@ -57,6 +57,9 @@ class ItemsModel(models.Model):
     class Meta:
         verbose_name = "Items"
         ordering = ("-updated_at",)
+
+    def __str__(self):
+        return self.owner_name
 
 
 class VideoItemsModel(models.Model):
