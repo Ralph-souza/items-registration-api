@@ -19,6 +19,9 @@ class ItemsModel(models.Model):
         "VideoItemsModel",
         default=None,
         related_name="video_item_titles",
+        editable=True,
+        blank=True,
+        null=True,
         on_delete=models.CASCADE
     )
     printed_items = models.ForeignKey(

@@ -1,0 +1,8 @@
+version: '1'
+services:
+  student-registration-api:
+    image: ralphssouza/items_registration-image:latest
+    container_name: items_registration-api
+    ports:
+      - '8000:8000'
+    command: python manage.py runserver 0.0.0.0:8000
