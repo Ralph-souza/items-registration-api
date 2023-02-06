@@ -8,6 +8,6 @@ VIDEO_MEDIA_FORMAT_CHOICES = (("dvd", "dvd"), ("blu-ray", "blu-ray"), ("streamin
 
 PRINTED_MEDIA_FORMAT_CHOICES = (("book", "book"), ("comics", "comics"), ("digital/kindle", "digital/kindle"))
 
-STATUS_CHOICES = (("loaned", "loaned"), ("not loaned", "not_loaned"))
+STATUS_CHOICES = (("loaned", "loaned"), ("not_loaned", "not_loaned"))
 
 RETURNED_CHOICES = (("yes", "yes"), ("no", "no"))

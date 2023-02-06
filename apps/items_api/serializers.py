@@ -17,8 +17,7 @@ class ItemsSerializer(serializers.ModelSerializer):
             "printed_items",
             "owner_id",
             "owner_name",
-            "created_at",
-            "updated_at"
+            "created_at"
         )
 
 
@@ -30,8 +29,7 @@ class VideoItemsSerializer(serializers.ModelSerializer):
             "video_item_id",
             "video_item_type",
             "loaner_name",
-            "created_at",
-            "updated_at"
+            "created_at"
         )
 
 
@@ -43,6 +41,5 @@ class PrintedItemsSerializer(serializers.ModelSerializer):
             "printed_item_id",
             "printed_item_type",
             "loaner_name",
-            "created_at",
-            "updated_at"
+            "created_at"
         )

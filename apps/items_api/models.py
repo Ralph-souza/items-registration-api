@@ -74,7 +74,7 @@ class VideoItemsModel(models.Model):
         choices=VIDEO_MEDIA_FORMAT_CHOICES,
         null=False
     )
-    release_date = models.DateTimeField(default=None, editable=True)
+    release_date = models.CharField(max_length=10, null=True)
     main_actor = models.CharField(max_length=250, null=False)
     status = models.CharField(max_length=20, default="no", choices=STATUS_CHOICES, null=False)
     loaner_name = models.ForeignKey(
@@ -86,9 +86,19 @@ class VideoItemsModel(models.Model):
         null=True,
         on_delete=models.CASCADE
     )
-    loaned_date = models.DateTimeField(default=None, editable=True)
+    loaned_date = models.DateTimeField(
+        default=None,
+        editable=True,
+        blank=True,
+        null=True
+    )
     returned_status = models.CharField(max_length=50, default=None, choices=RETURNED_CHOICES, blank=True, null=True)
-    returned_at = models.DateTimeField(default=None, editable=True)
+    returned_at = models.DateTimeField(
+        default=None,
+        editable=True,
+        blank=True,
+        null=True
+    )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
 
@@ -115,7 +125,7 @@ class PrintedItemsModel(models.Model):
         choices=PRINTED_MEDIA_FORMAT_CHOICES, 
         null=False
     )
-    release_date = models.DateTimeField(default=None, editable=True)
+    release_date = models.CharField(max_length=10, null=True)
     edition = models.CharField(max_length=10, blank=True, null=True)
     author = models.CharField(max_length=250, null=False)
     status = models.CharField(max_length=20, default="no", choices=STATUS_CHOICES, null=False)
@@ -128,9 +138,19 @@ class PrintedItemsModel(models.Model):
         null=True,
         on_delete=models.CASCADE
     )
-    loaned_date = models.DateTimeField(default=None, editable=True)
+    loaned_date = models.DateTimeField(
+        default=None,
+        editable=True,
+        blank=True,
+        null=True
+    )
     returned_status = models.CharField(max_length=50, default=None, choices=RETURNED_CHOICES, blank=True, null=True)
-    returned_at = models.DateTimeField(default=None, editable=True)
+    returned_at = models.DateTimeField(
+        default=None,
+        editable=True,
+        blank=True,
+        null=True
+    )
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
 
