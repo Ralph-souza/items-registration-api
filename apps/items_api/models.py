@@ -28,6 +28,9 @@ class ItemsModel(models.Model):
         "PrintedItemsModel",
         default=None,
         related_name="printed_item_titles",
+        editable=True,
+        blank=True,
+        null=True,
         on_delete=models.CASCADE
     )
     owner_id = models.ForeignKey(
