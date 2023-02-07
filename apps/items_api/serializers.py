@@ -7,6 +7,8 @@ class ItemsSerializer(serializers.ModelSerializer):
     item_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     video_items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     printed_items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    owner_id = serializers.UUIDField(format="hex")
+    owner_name = serializers.CharField(max_length=250, allow_blank=True, allow_null=True, trim_whitespace=True)
 
     class Meta:
         model = ItemsModel

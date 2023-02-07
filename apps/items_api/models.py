@@ -36,7 +36,7 @@ class ItemsModel(models.Model):
     owner_id = models.ForeignKey(
         "user_api.UserModel",
         default=None,
-        related_name="users_ids",
+        related_name="user_ids",
         editable=True,
         blank=True,
         null=True,
@@ -45,7 +45,7 @@ class ItemsModel(models.Model):
     owner_name = models.ForeignKey(
         "user_api.UserModel",
         default=None,
-        related_name="users_names",
+        related_name="user_names",
         editable=True,
         blank=True,
         null=True,
@@ -59,7 +59,7 @@ class ItemsModel(models.Model):
         ordering = ("-updated_at",)
 
     def __str__(self):
-        return self.owner_name
+        return str(self.owner_name)
 
 
 class VideoItemsModel(models.Model):
