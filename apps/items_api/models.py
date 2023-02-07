@@ -12,11 +12,11 @@ from .choices import (
 )
 
 
-class ItemsModel(models.Model):
-    item_id = models.AutoField(primary_key=True, editable=False)
+class ItemModel(models.Model):
+    item = models.AutoField(primary_key=True, editable=False)
     item_type = models.CharField(max_length=50, choices=ITEM_TYPE_CHOICES, default="video", null=False)
-    video_items = models.ForeignKey(
-        "VideoItemsModel",
+    video_item = models.ForeignKey(
+        "VideoItemModel",
         default=None,
         related_name="video_item_titles",
         editable=True,
@@ -24,8 +24,8 @@ class ItemsModel(models.Model):
         null=True,
         on_delete=models.CASCADE
     )
-    printed_items = models.ForeignKey(
-        "PrintedItemsModel",
+    printed_item = models.ForeignKey(
+        "PrintedItemModel",
         default=None,
         related_name="printed_item_titles",
         editable=True,
@@ -33,10 +33,10 @@ class ItemsModel(models.Model):
         null=True,
         on_delete=models.CASCADE
     )
-    owner_id = models.ForeignKey(
+    owner = models.ForeignKey(
         "user_api.UserModel",
         default=None,
-        related_name="user_ids",
+        related_name="users",
         editable=True,
         blank=True,
         null=True,
@@ -55,15 +55,15 @@ class ItemsModel(models.Model):
     updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
 
     class Meta:
-        verbose_name = "Items"
+        verbose_name = "Item"
         ordering = ("-updated_at",)
 
     def __str__(self):
         return str(self.owner_name)
 
 
-class VideoItemsModel(models.Model):
-    video_item_id = models.AutoField(primary_key=True, editable=False)
+class VideoItemModel(models.Model):
+    video_item = models.AutoField(primary_key=True, editable=False)
     video_item_title = models.CharField(max_length=250, null=False)
     video_media_type = models.CharField(
         max_length=250,
@@ -106,15 +106,15 @@ class VideoItemsModel(models.Model):
     updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
 
     class Meta:
-        verbose_name = "Video Items"
+        verbose_name = "Video Item"
         ordering = ("-updated_at",)
 
     def __str__(self):
         return self.video_item_title
 
 
-class PrintedItemsModel(models.Model):
-    printed_item_id = models.AutoField(primary_key=True, editable=False)
+class PrintedItemModel(models.Model):
+    printed_item = models.AutoField(primary_key=True, editable=False)
     printed_item_title = models.CharField(max_length=250, null=False)
     printed_media_type = models.CharField(
         max_length=250, 
@@ -158,7 +158,7 @@ class PrintedItemsModel(models.Model):
     updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
 
     class Meta:
-        verbose_name = "Printed Items"
+        verbose_name = "Printed Item"
         ordering = ("-updated_at",)
 
     def __str__(self):

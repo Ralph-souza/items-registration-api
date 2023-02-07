@@ -5,8 +5,8 @@ from .views import ItemsViewSet, VideoItemsViewSet, PrintedItemsViewSet
 app_name = "items_api"
 
 router = routers.DefaultRouter()
-router.register(r"items", ItemsViewSet, basename="items"),
-router.register(r"video_items", VideoItemsViewSet, basename="video_items"),
-router.register(r"printed_items", PrintedItemsViewSet, basename="printed_items"),
+router.register(r"item", ItemsViewSet, basename="item"),
+router.register(r"video_item", VideoItemsViewSet, basename="video_item"),
+router.register(r"printed_item", PrintedItemsViewSet, basename="printed_item"),
 
 urlpatterns = router.urls

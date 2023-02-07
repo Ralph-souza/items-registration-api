@@ -3,16 +3,16 @@ import uuid
 from django.db import models
 from django.utils import timezone
 
-from ..items_api.models import (ItemsModel, VideoItemsModel, PrintedItemsModel)
+from ..items_api.models import ItemModel, VideoItemModel, PrintedItemModel
 
 
 class UserModel(models.Model):
-    user_id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    user = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
     user_name = models.CharField(max_length=250, null=False)
     user_email = models.EmailField(max_length=100, null=False)
     user_password = models.CharField(max_length=250, null=False)
-    user_items = models.ForeignKey(
-        ItemsModel,
+    user_item = models.ForeignKey(
+        ItemModel,
         default=None,
         related_name="item_ids",
         editable=True,
@@ -20,19 +20,19 @@ class UserModel(models.Model):
         null=True,
         on_delete=models.CASCADE
     )
-    user_video_items = models.ForeignKey(
-        VideoItemsModel,
+    user_video_item = models.ForeignKey(
+        VideoItemModel,
         default=None,
-        related_name="video_items_id",
+        related_name="video_items",
         editable=True,
         blank=True,
         null=True,
         on_delete=models.CASCADE
     )
-    user_printed_items = models.ForeignKey(
-        PrintedItemsModel,
+    user_printed_item = models.ForeignKey(
+        PrintedItemModel,
         default=None,
-        related_name="printed_items_id",
+        related_name="printed_items",
         editable=True,
         blank=True,
         null=True,

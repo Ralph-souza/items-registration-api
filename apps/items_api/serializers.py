@@ -1,46 +1,46 @@
 from rest_framework import serializers
 
-from .models import ItemsModel, VideoItemsModel, PrintedItemsModel
+from .models import ItemModel, VideoItemModel, PrintedItemModel
 
 
-class ItemsSerializer(serializers.ModelSerializer):
-    item_id = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    video_items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    printed_items = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    owner_id = serializers.UUIDField(format="hex")
+class ItemSerializer(serializers.ModelSerializer):
+    item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    video_item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    printed_item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    owner = serializers.UUIDField(format="hex")
     owner_name = serializers.CharField(max_length=250, allow_blank=True, allow_null=True, trim_whitespace=True)
 
     class Meta:
-        model = ItemsModel
+        model = ItemModel
         fields = "__all__"
         read_only_fields = (
-            "item_id",
-            "video_items",
-            "printed_items",
-            "owner_id",
+            "item",
+            "video_item",
+            "printed_item",
+            "owner",
             "owner_name",
             "created_at"
         )
 
 
-class VideoItemsSerializer(serializers.ModelSerializer):
+class VideoItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = VideoItemsModel
+        model = VideoItemModel
         fields = "__all__"
         read_only_fields = (
-            "video_item_id",
+            "video_item",
             "video_item_type",
             "loaner_name",
             "created_at"
         )
 
 
-class PrintedItemsSerializer(serializers.ModelSerializer):
+class PrintedItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PrintedItemsModel
+        model = PrintedItemModel
         fields = "__all__"
         read_only_fields = (
-            "printed_item_id",
+            "printed_item",
             "printed_item_type",
             "loaner_name",
             "created_at"

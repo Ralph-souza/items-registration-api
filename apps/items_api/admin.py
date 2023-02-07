@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import ItemsModel, VideoItemsModel, PrintedItemsModel
+from .models import ItemModel, VideoItemModel, PrintedItemModel
 
 
-admin.site.register(ItemsModel)
-admin.site.register(VideoItemsModel)
-admin.site.register(PrintedItemsModel)
+admin.site.register(ItemModel)
+admin.site.register(VideoItemModel)
+admin.site.register(PrintedItemModel)
