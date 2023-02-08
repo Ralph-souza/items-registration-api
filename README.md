@@ -9,12 +9,16 @@ This API was made for studies purposes, it allows the creating of a items list w
 The main objective is to keep track of which collection objects the person has and if him/her lends those same objects to others persons.
 &nbsp
 
+---
+
 ## Application Workflow Diagram
 
 <div style="display: inline-block;">
  <img title="Application Workflow Diagram" alt="Application Workflow Diagram" align="center" src="img/items_register_api.drawio.png">
 </div>
 &nbsp
+
+---
 
 ## Entity Relationship Diagram
 
@@ -23,9 +27,13 @@ The main objective is to keep track of which collection objects the person has a
 </div>
 &nbsp
 
+---
+
 ## Items Registration API - Postman Collection
 
-[Postman Collection JSON](postman/Items Registration API Collection.postman_collection.json)
+<div>
+    <a href="postman/Items Registration API Collection.postman_collection.json">Postman Collection</a>
+</div>
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

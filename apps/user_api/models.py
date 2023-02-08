@@ -14,7 +14,7 @@ class UserModel(models.Model):
     user_item = models.ForeignKey(
         ItemModel,
         default=None,
-        related_name="item_ids",
+        related_name="items_ids",
         editable=True,
         blank=True,
         null=True,
@@ -23,7 +23,7 @@ class UserModel(models.Model):
     user_video_item = models.ForeignKey(
         VideoItemModel,
         default=None,
-        related_name="video_items",
+        related_name="videos_items",
         editable=True,
         blank=True,
         null=True,
@@ -32,7 +32,7 @@ class UserModel(models.Model):
     user_printed_item = models.ForeignKey(
         PrintedItemModel,
         default=None,
-        related_name="printed_items",
+        related_name="printeds_items",
         editable=True,
         blank=True,
         null=True,
