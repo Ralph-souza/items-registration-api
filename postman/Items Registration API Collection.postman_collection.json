@@ -1,0 +1,1070 @@
+{
+	"info": {
+		"_postman_id": "a7eb1823-26cf-4ec6-9ba7-49a08e9608b5",
+		"name": "Items Registration API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14825300"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "List Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user}}/v1/api/user/",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user}}/v1/api/user/0cead02b-0187-45a7-bdf5-34a7b08c02b2/",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"user",
+								"0cead02b-0187-45a7-bdf5-34a7b08c02b2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"\",\n    \"user_email\": \"\",\n    \"user_password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user}}/v1/api/user/",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user}}/v1/api/user/bc9b8c99-1730-4013-9f9b-8f6077d59270/",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"user",
+								"bc9b8c99-1730-4013-9f9b-8f6077d59270",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\": \"\",\n    \"user_email\": \"\",\n    \"user_password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user}}/v1/api/user/bc9b8c99-1730-4013-9f9b-8f6077d59270/",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"user",
+								"bc9b8c99-1730-4013-9f9b-8f6077d59270",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user}}/v1/api/user/bc9b8c99-1730-4013-9f9b-8f6077d59270/",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"user",
+								"bc9b8c99-1730-4013-9f9b-8f6077d59270",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Loaners",
+			"item": [
+				{
+					"name": "List Loaners",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loaner}}/v1/api/loaner/",
+							"host": [
+								"{{loaner}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"loaner",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Loaner By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loaner}}/v1/api/loaner/52b63edf-2ccf-4e03-9a0b-e68a4fe860ee/",
+							"host": [
+								"{{loaner}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"loaner",
+								"52b63edf-2ccf-4e03-9a0b-e68a4fe860ee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Loaner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loaned_videos\": null,\n    \"loaned_prints\": null,\n    \"loaner_name\": \"\",\n    \"loaner_email\": \"\",\n    \"loaner_phone\": \"\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loaner}}/v1/api/loaner/",
+							"host": [
+								"{{loaner}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"loaner",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial Update Loaner",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loaner_name\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loaner}}/v1/api/loaner/52b63edf-2ccf-4e03-9a0b-e68a4fe860ee/",
+							"host": [
+								"{{loaner}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"loaner",
+								"52b63edf-2ccf-4e03-9a0b-e68a4fe860ee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Loaner",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loaner_name\": \"\",\n    \"loaner_email\": \"\",\n    \"loaner_phone\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loaner}}/v1/api/loaner/6b0f36d3-2659-42c2-a57a-b49a78827a26/",
+							"host": [
+								"{{loaner}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"loaner",
+								"6b0f36d3-2659-42c2-a57a-b49a78827a26",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Loaner",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{loaner}}/v1/api/loaner/b7916334-b169-49a1-995d-d4d5bd010d83/",
+							"host": [
+								"{{loaner}}"
+							],
+							"path": [
+								"v1",
+								"api",
+								"loaner",
+								"b7916334-b169-49a1-995d-d4d5bd010d83",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "User Items",
+					"item": [
+						{
+							"name": "List User Items",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{item}}/v1/api/item/",
+									"host": [
+										"{{item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Items By Id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user}}/v1/api/user/",
+									"host": [
+										"{{user}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User Item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"item_type\": \"video\",\n    \"video_items\": [\n        {\n            \"video_item_title\": \"Top Gun: Ases Indomaveis\"\n        }\n    ],\n    \"owner\": \"fbbf9e4a-f241-4650-b58d-716833bd8d55\",\n    \"owner_name\": \"Ralph dos Santos Souza\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{item}}/v1/api/item/",
+									"host": [
+										"{{item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Partial Update User Item",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_name\": \"\",\n    \"user_email\": \"\",\n    \"user_password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user}}/v1/api/user/503c89b1-40d0-4780-8f78-7e940c65319e/",
+									"host": [
+										"{{user}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"user",
+										"503c89b1-40d0-4780-8f78-7e940c65319e",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User Item",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user_name\": \"\",\n    \"user_email\": \"\",\n    \"user_password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user}}/v1/api/user/0cead02b-0187-45a7-bdf5-34a7b08c02b2/",
+									"host": [
+										"{{user}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"user",
+										"0cead02b-0187-45a7-bdf5-34a7b08c02b2",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User Item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{user}}/v1/api/user/b117af68-8f50-4d97-a32a-8e07bc2861ce/",
+									"host": [
+										"{{user}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"user",
+										"b117af68-8f50-4d97-a32a-8e07bc2861ce",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Video Items",
+					"item": [
+						{
+							"name": "List User Video Items",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{video Item}}/v1/api/video_item/",
+									"host": [
+										"{{video Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"video_item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Video Item By Id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{video Item}}/v1/api/video_item/1/",
+									"host": [
+										"{{video Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"video_item",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User Video Item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"video_item_title\": \"\",\n    \"video_media_type\": \"\",\n    \"video_media_format\": \"\",\n    \"release_date\": \"\",\n    \"main_actor\": \"\",\n    \"status\": \"\",\n    \"loaner_name\": \"\",\n    \"loaned_date\": \"\",\n    \"returned_status\": \"\",\n    \"returned_at\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{video Item}}/v1/api/video_item/",
+									"host": [
+										"{{video Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"video_item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Partial Update User Video Item",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"video_item_title\": \"\",\n    \"video_media_type\": \"\",\n    \"video_media_format\": \"\",\n    \"release_date\": \"\",\n    \"main_actor\": \"\",\n    \"status\": \"\",\n    \"loaner_name\": \"\",\n    \"loaned_date\": \"\",\n    \"returned_status\": \"\",\n    \"returned_at\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{video Item}}/v1/api/video_item/",
+									"host": [
+										"{{video Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"video_item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User Video Item",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"video_item_title\": \"\",\n    \"video_media_type\": \"\",\n    \"video_media_format\": \"\",\n    \"release_date\": \"\",\n    \"main_actor\": \"\",\n    \"status\": \"\",\n    \"loaner_name\": \"\",\n    \"loaned_date\": \"\",\n    \"returned_status\": \"\",\n    \"returned_at\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{video Item}}/v1/api/video_item/",
+									"host": [
+										"{{video Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"video_item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User Video Item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{video Item}}/v1/api/video_item/",
+									"host": [
+										"{{video Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"video_item",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Printed Items",
+					"item": [
+						{
+							"name": "List User Printed Items",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{printed Item}}/v1/api/printed_item/",
+									"host": [
+										"{{printed Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"printed_item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Printed Item By Id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{printed Item}}/v1/api/printed_item/1/",
+									"host": [
+										"{{printed Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"printed_item",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create User Printed Item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"printed_item_title\": \"\",\n    \"printed_media_type\": \"\",\n    \"printed_media_format\": \"\",\n    \"release_date\": \"\",\n    \"edition\": \"\",\n    \"author\": \"\",\n    \"status\": \"\",\n    \"loaner_name\": \"\",\n    \"loaned_date\": \"\",\n    \"returned_status\": \"\",\n    \"returned_at\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{printed Item}}/v1/api/printed_item/",
+									"host": [
+										"{{printed Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"printed_item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Partial Update User Printed Item",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"printed_item_title\": \"\",\n    \"printed_media_type\": \"\",\n    \"printed_format_type\": \"\",\n    \"release_date\": \"\",\n    \"edition\": \"\",\n    \"author\": \"\",\n    \"status\": \"\",\n    \"loaned_date\": \"\",\n    \"returned_status\": \"\",\n    \"returned_at\": \"\",\n    \"loaner_name\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{printed Item}}/v1/api/printed_item/1/",
+									"host": [
+										"{{printed Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"printed_item",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User Printed Item",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"printed_item_title\": \"\",\n    \"printed_media_type\": \"\",\n    \"printed_format_type\": \"\",\n    \"release_date\": \"\",\n    \"edition\": \"\",\n    \"author\": \"\",\n    \"status\": \"\",\n    \"loaned_date\": \"\",\n    \"returned_status\": \"\",\n    \"returned_at\": \"\",\n    \"loaner_name\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{printed Item}}/v1/api/printed_item/",
+									"host": [
+										"{{printed Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"printed_item",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User Printed Item",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{printed Item}}/v1/api/printed_item/",
+									"host": [
+										"{{printed Item}}"
+									],
+									"path": [
+										"v1",
+										"api",
+										"printed_item",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "user",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "loaner",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "item",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "video Item",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "printed Item",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

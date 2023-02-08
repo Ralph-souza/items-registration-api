@@ -23,5 +23,9 @@ The main objective is to keep track of which collection objects the person has a
 </div>
 &nbsp
 
+## Items Registration API - Postman Collection
+
+[Postman Collection JSON](postman/Items Registration API Collection.postman_collection.json)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
