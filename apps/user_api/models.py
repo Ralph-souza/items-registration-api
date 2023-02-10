@@ -3,8 +3,6 @@ import uuid
 from django.db import models
 from django.utils import timezone
 
-from ..items_api.models import ItemModel, VideoItemModel, PrintedItemModel
-
 
 class UserModel(models.Model):
     user = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
@@ -12,7 +10,7 @@ class UserModel(models.Model):
     user_email = models.EmailField(max_length=100, null=False)
     user_password = models.CharField(max_length=250, null=False)
     user_item = models.ForeignKey(
-        ItemModel,
+        "items_api.ItemModel",
         default=None,
         related_name="items_ids",
         editable=True,
@@ -21,7 +19,7 @@ class UserModel(models.Model):
         on_delete=models.CASCADE
     )
     user_video_item = models.ForeignKey(
-        VideoItemModel,
+        "items_api.VideoItemModel",
         default=None,
         related_name="videos_items",
         editable=True,
@@ -30,9 +28,9 @@ class UserModel(models.Model):
         on_delete=models.CASCADE
     )
     user_printed_item = models.ForeignKey(
-        PrintedItemModel,
+        "items_api.PrintedItemModel",
         default=None,
-        related_name="printeds_items",
+        related_name="printed_items",
         editable=True,
         blank=True,
         null=True,

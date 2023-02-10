@@ -45,7 +45,7 @@ class ItemModel(models.Model):
     owner_name = models.ForeignKey(
         "user_api.UserModel",
         default=None,
-        related_name="users_names",
+        related_name="names",
         editable=True,
         blank=True,
         null=True,
