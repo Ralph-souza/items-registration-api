@@ -15,5 +15,5 @@ class LoanerSerializer(serializers.ModelSerializer):
             "loaned_video_item",
             "loaned_printed_item",
             "created_at",
-            "updated_at"
+            "updated_at",
         )

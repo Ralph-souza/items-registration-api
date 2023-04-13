@@ -1,47 +1,90 @@
 from rest_framework import serializers
 
-from .models import ItemModel, VideoItemModel, PrintedItemModel
+from .models import GamesItemModel, ItemModel, PrintedItemModel, VideoItemModel
 
 
-class ItemSerializer(serializers.ModelSerializer):
-    item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    video_item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    printed_item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    owner = serializers.UUIDField(format="hex")
-    owner_name = serializers.CharField(max_length=250, allow_blank=True, allow_null=True, trim_whitespace=True)
+class VideoItemModelSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source="video_item", required=False)
+    title = serializers.CharField(source="video_item_title")
+    type = serializers.CharField(source="video_media_type")
+    format = serializers.CharField(source="video_format_type")
+    returned_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+
+    class Meta:
+        model = VideoItemModel
+        fields = [
+            "id",
+            "title",
+            "type",
+            "format",
+            "main_actor",
+            "released_date",
+            "status",
+            "returned_at",
+            "created_at",
+            "updated_at",
+        ]
+
+
+class PrintedItemModelSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source="printed_item", required=False)
+    title = serializers.CharField(source="printed_item_title")
+    type = serializers.CharField(source="printed_media_type")
+    format = serializers.CharField(source="printed_format_type")
+    returned_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+
+    class Meta:
+        model = PrintedItemModel
+        fields = [
+            "id",
+            "title",
+            "type",
+            "format",
+            "author",
+            "released_date",
+            "status",
+            "returned_at",
+            "created_at",
+            "updated_at",
+        ]
+
+
+class GameItemModelSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source="game_item", required=False)
+    title = serializers.CharField(source="game_item_title")
+    format = serializers.CharField(source="game_format_type")
+    returned_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+
+    class Meta:
+        model = GamesItemModel
+        fields = [
+            "id",
+            "title",
+            "type",
+            "format",
+            "producer",
+            "released_date",
+            "status",
+            "returned_at",
+            "created_at",
+            "updated_at",
+        ]
+
+
+class ItemModelSerializer(serializers.Serializer):
+    id = serializers.IntegerField(source="item", required=False)
+    video = VideoItemModelSerializer(source="video_item")
+    printed = PrintedItemModelSerializer(source="printed_item")
+    game = GameItemModelSerializer(source="game_item")
+    created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
 
     class Meta:
         model = ItemModel
-        fields = "__all__"
-        read_only_fields = (
-            "item",
-            "video_item",
-            "printed_item",
-            "owner",
-            "owner_name",
-            "created_at"
-        )
-
-
-class VideoItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = VideoItemModel
-        fields = "__all__"
-        read_only_fields = (
-            "video_item",
-            "video_item_type",
-            "loaner_name",
-            "created_at"
-        )
-
-
-class PrintedItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PrintedItemModel
-        fields = "__all__"
-        read_only_fields = (
-            "printed_item",
-            "printed_item_type",
-            "loaner_name",
-            "created_at"
-        )
+        fields = ["id", "video", "printed", "game", "created_at", "updated_at"]

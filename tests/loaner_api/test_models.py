@@ -1,12 +1,9 @@
 from django.test import TestCase
-# from django.utils import timezone
-# from django.core.urlresolvers import reverse
 
 from apps.loaner_api.models import LoanerModel
 
 
 class TestLoanerModel(TestCase):
-
     @staticmethod
     def create_loaner(loaner_payload):
         return LoanerModel.objects.create(loaner_payload)

@@ -1,12 +1,9 @@
 from django.test import TestCase
-# from django.utils import timezone
-# from django.core.urlresolvers import reverse
 
-from apps.items_api.models import ItemModel, VideoItemModel, PrintedItemModel
+from apps.items_api.models import ItemModel, PrintedItemModel, VideoItemModel
 
 
 class TestItemModel(TestCase):
-
     @staticmethod
     def create_item(video_item_payload):
         return ItemModel.objects.create(video_item_payload)
@@ -18,7 +15,6 @@ class TestItemModel(TestCase):
 
 
 class TestVideoItemModel(TestCase):
-
     @staticmethod
     def create_video_item(video_item_payload):
         return VideoItemModel.objects.create(video_item_payload)
@@ -30,7 +26,6 @@ class TestVideoItemModel(TestCase):
 
 
 class TestPrintedItemModel(TestCase):
-
     @staticmethod
     def create_printed_item(printed_item_payload):
         return PrintedItemModel.objects.create(printed_item_payload)

@@ -12,10 +12,4 @@ class UserModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserModel
-        fields = [
-            "id",
-            "user",
-            "email",
-            "created_at",
-            "updated_at"
-        ]
+        fields = ["id", "user", "email", "created_at", "updated_at"]

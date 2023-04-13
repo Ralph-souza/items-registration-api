@@ -1,9 +1,9 @@
 import uuid
 
-from factory.django import DjangoModelFactory
 from django.utils import timezone
+from factory.django import DjangoModelFactory
 
-from apps.items_api.models import ItemModel, VideoItemModel, PrintedItemModel
+from apps.items_api.models import ItemModel, PrintedItemModel, VideoItemModel
 
 
 class ItemFactory(DjangoModelFactory):

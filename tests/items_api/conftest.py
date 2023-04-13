@@ -1,6 +1,6 @@
 import pytest
 
-from .factories import ItemFactory, VideoItemFactory, PrintedItemFactory
+from .factories import ItemFactory, PrintedItemFactory, VideoItemFactory
 
 
 @pytest.fixture
@@ -28,7 +28,7 @@ def item_payload():
             }
         ],
         "owner": "fbbf9e4a-f241-4650-b58d-716833bd8d55",
-        "owner_name": "Some owner name"
+        "owner_name": "Some owner name",
     }
 
 
@@ -42,7 +42,7 @@ def item_invalid_payload():
             }
         ],
         "owner": None,
-        "owner_name": "Some owner name"
+        "owner_name": "Some owner name",
     }
 
 
@@ -53,7 +53,7 @@ def video_item_payload():
         "video_media_type": "movies",
         "video_media_format": "dvd",
         "main_actor": "Some actor",
-        "status": "not_loaned"
+        "status": "not_loaned",
     }
 
 
@@ -64,7 +64,7 @@ def video_item_invalid_payload():
         "video_media_type": None,
         "video_media_format": "dvd",
         "main_actor": "Some actor",
-        "status": "not_loaned"
+        "status": "not_loaned",
     }
 
 
@@ -75,7 +75,7 @@ def printed_item_payload():
         "printed_media_type": "movies",
         "printed_media_format": "dvd",
         "main_actor": "Some actor",
-        "status": "not_loaned"
+        "status": "not_loaned",
     }
 
 
@@ -86,5 +86,5 @@ def printed_item_invalid_payload():
         "printed_media_type": None,
         "printed_media_format": "dvd",
         "author": "Some author",
-        "status": "not_loaned"
+        "status": "not_loaned",
     }

@@ -7,13 +7,25 @@ from apps.items_api.models import ItemModel
 
 
 class UserModel(models.Model):
-    user = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4, editable=False)
+    user = models.UUIDField(
+        primary_key=True, unique=True, default=uuid.uuid4, editable=False
+    )
     user_name = models.CharField(max_length=250, null=False)
     user_email = models.EmailField(max_length=100, null=False)
     user_password = models.CharField(max_length=250, null=False)
-    user_item = models.ForeignKey(ItemModel, default=None, related_name="items", editable=True, blank=True, null=True, on_delete=models.CASCADE)
+    user_item = models.ForeignKey(
+        ItemModel,
+        default=None,
+        related_name="items",
+        editable=True,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+    )
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(default=None, editable=True, blank=True, null=True)
+    updated_at = models.DateTimeField(
+        default=None, editable=True, blank=True, null=True
+    )
 
     class Meta:
         verbose_name = "User"

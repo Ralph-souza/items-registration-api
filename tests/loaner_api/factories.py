@@ -1,7 +1,7 @@
 import uuid
 
-from factory.django import DjangoModelFactory
 from django.utils import timezone
+from factory.django import DjangoModelFactory
 
 from apps.loaner_api.models import LoanerModel
 
@@ -17,6 +17,3 @@ class LoanerFactory(DjangoModelFactory):
 
     class Meta:
         model = LoanerModel
-
-
-

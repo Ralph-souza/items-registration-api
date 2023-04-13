@@ -1,7 +1,7 @@
 import uuid
 
-from factory.django import DjangoModelFactory
 from django.utils import timezone
+from factory.django import DjangoModelFactory
 
 from apps.user_api.models import UserModel
 
