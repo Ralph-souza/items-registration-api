@@ -1,11 +1,11 @@
 from drf_jsonmask.views import OptimizedQuerySetMixin
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 
 from .models import UserModel
-from .serializers import UserSerializer
+from .serializers import UserModelSerializer
 
 
-class UserViewSet(OptimizedQuerySetMixin, viewsets.ModelViewSet):
+class UserModelViewSet(OptimizedQuerySetMixin, ModelViewSet):
     http_method_names = ["get", "post", "patch", "put", "delete"]
     queryset = UserModel.objects.all().order_by("created_at")
-    serializer_class = UserSerializer
+    serializer_class = UserModelSerializer

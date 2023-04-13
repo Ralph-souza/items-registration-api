@@ -29,6 +29,15 @@ The main objective is to keep track of which collection objects the person has a
 
 ---
 
+## Response List Object
+
+<div style="display: inline-block;">
+ <img title="Response List Object" alt="Response List Object" align="center" src="img/jsoncrack.png">
+</div>
+&nbsp
+
+---
+
 ## Items Registration API - Postman Collection
 
 <div>

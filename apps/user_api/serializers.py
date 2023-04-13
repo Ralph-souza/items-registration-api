@@ -3,29 +3,19 @@ from rest_framework import serializers
 from .models import UserModel
 
 
-class UserSerializer(serializers.ModelSerializer):
-    user_item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    user_video_item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    user_printed_item = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+class UserModelSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(source="user", required=False)
+    user = serializers.CharField(source="user_name")
+    email = serializers.EmailField(source="user_email")
+    created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+    updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
 
     class Meta:
         model = UserModel
         fields = [
+            "id",
             "user",
-            "user_name",
-            "user_email",
-            "user_item",
-            "user_video_item",
-            "user_printed_item",
+            "email",
             "created_at",
             "updated_at"
         ]
-
-        read_only_fields = (
-            "user",
-            "user_item",
-            "user_video_item",
-            "user_printed_item",
-            "created_at",
-            "updated_at"
-        )
