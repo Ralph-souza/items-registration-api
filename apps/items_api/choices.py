@@ -1,19 +1,33 @@
-VIDEO_MEDIA_TYPE_CHOICES = (("movies", "movies"), ("series", "series"))
+from django.db import models
 
-PRINTED_MEDIA_TYPE_CHOICES = (("physical", "physical"), ("digital", "digital"))
 
-VIDEO_MEDIA_FORMAT_CHOICES = (
-    ("dvd", "dvd"),
-    ("blu-ray", "blu-ray"),
-    ("streaming/cloud", "streaming/cloud"),
-)
+class VideoTypeChoices(models.TextChoices):
+    MOVIES = "movies", "Movies"
+    SERIES = "series", "Series"
 
-PRINTED_MEDIA_FORMAT_CHOICES = (
-    ("book", "book"),
-    ("comics", "comics"),
-    ("digital/kindle", "digital/kindle"),
-)
 
-GAMES_MEDIA_FORMAT_CHOICES = (("physical", "physical"), ("digital", "digital"))
+class VideoFormatChoices(models.TextChoices):
+    DVD = "dvd", "DVD"
+    BLURAY = "blu_ray", "Blu-ray"
+    DIGITAL = "digital", "Digital"
 
-STATUS_CHOICES = (("loaned", "loaned"), ("not_loaned", "not_loaned"))
+
+class PrintedTypeChoices(models.TextChoices):
+    PHYSICAL = "physical", "Physical"
+    DIGITAL = "digital", "Digital"
+
+
+class PrintedFormatChoices(models.TextChoices):
+    BOOK = "book", "Book"
+    COMICS = "comics", "Comics"
+    DIGITAL = "digital", "Digital"
+
+
+class GamesFormatChoices(models.TextChoices):
+    PHYSICAL = "physical", "Physical"
+    DIGITAL = "digital", "Digital"
+
+
+class LoanesStatusChoices(models.TextChoices):
+    LOANED = "loaned", "Loaned"
+    NOT_LOANED = "not_loaned", "Not_loaned"

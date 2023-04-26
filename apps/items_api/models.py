@@ -1,35 +1,31 @@
 from django.db import models
-from django.utils import timezone
 
-from .choices import (GAMES_MEDIA_FORMAT_CHOICES, PRINTED_MEDIA_FORMAT_CHOICES,
-                      PRINTED_MEDIA_TYPE_CHOICES, STATUS_CHOICES,
-                      VIDEO_MEDIA_FORMAT_CHOICES, VIDEO_MEDIA_TYPE_CHOICES)
+from apps.items_api.choices import (GamesFormatChoices, PrintedFormatChoices,
+                                    PrintedTypeChoices, VideoFormatChoices,
+                                    VideoTypeChoices)
+from apps.user_api.models import UserModel
 
 
-class VideoItemModel(models.Model):
+class VideosItemModel(models.Model):
     video_item = models.AutoField(primary_key=True, editable=False)
-    video_item_title = models.CharField(max_length=250, null=False)
+    video_item_title = models.CharField(max_length=150, null=False)
     video_media_type = models.CharField(
-        max_length=250, default="movies", choices=VIDEO_MEDIA_TYPE_CHOICES, null=False
+        choices=VideoTypeChoices.choices, default=VideoTypeChoices.MOVIES, max_length=20
     )
     video_format_type = models.CharField(
-        max_length=50, default="dvd", choices=VIDEO_MEDIA_FORMAT_CHOICES, null=False
+        choices=VideoFormatChoices.choices,
+        default=VideoFormatChoices.DVD,
+        max_length=20,
     )
-    main_actor = models.CharField(max_length=250, null=False)
-    release_date = models.CharField(max_length=10, null=True)
-    status = models.CharField(
-        max_length=20, default="no", choices=STATUS_CHOICES, null=False
-    )
-    returned_date = models.DateTimeField(
-        default=None, editable=True, blank=True, null=True
-    )
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(
-        default=None, editable=True, blank=True, null=True
-    )
+    main_actor = models.CharField(max_length=150, null=False)
+    synopsis = models.TextField()
+    released_at = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField()
 
     class Meta:
-        verbose_name = "Video Item"
+        verbose_name = "Video item"
+        verbose_name_plural = "Video items"
         ordering = ("-updated_at",)
 
     def __str__(self):
@@ -38,31 +34,27 @@ class VideoItemModel(models.Model):
 
 class PrintedItemModel(models.Model):
     printed_item = models.AutoField(primary_key=True, editable=False)
-    printed_item_title = models.CharField(max_length=250, null=False)
+    printed_item_title = models.CharField(max_length=150, null=False)
     printed_media_type = models.CharField(
-        max_length=250,
-        default="physical",
-        choices=PRINTED_MEDIA_TYPE_CHOICES,
-        null=False,
+        choices=PrintedTypeChoices.choices,
+        default=PrintedTypeChoices.PHYSICAL,
+        max_length=20,
     )
     printed_format_type = models.CharField(
-        max_length=50, default="book", choices=PRINTED_MEDIA_FORMAT_CHOICES, null=False
+        choices=PrintedFormatChoices.choices,
+        default=PrintedFormatChoices.BOOK,
+        max_length=20,
     )
-    author = models.CharField(max_length=250, null=False)
-    release_date = models.CharField(max_length=10, null=True)
-    status = models.CharField(
-        max_length=20, default="no", choices=STATUS_CHOICES, null=False
-    )
-    returned_date = models.DateTimeField(
-        default=None, editable=True, blank=True, null=True
-    )
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(
-        default=None, editable=True, blank=True, null=True
-    )
+    author = models.CharField(max_length=150, null=False)
+    synopsis = models.TextField()
+    edition = models.CharField(max_length=20)
+    released_at = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField()
 
     class Meta:
-        verbose_name = "Printed Item"
+        verbose_name = "Printed item"
+        verbose_name_plural = "Printed items"
         ordering = ("-updated_at",)
 
     def __str__(self):
@@ -71,65 +63,38 @@ class PrintedItemModel(models.Model):
 
 class GamesItemModel(models.Model):
     game_item = models.AutoField(primary_key=True, editable=False)
-    game_item_title = models.CharField(max_length=250, null=False)
+    game_item_title = models.CharField(max_length=150, null=False)
     game_format_type = models.CharField(
-        max_length=50, default="digital", choices=GAMES_MEDIA_FORMAT_CHOICES, null=False
+        choices=GamesFormatChoices.choices,
+        default=GamesFormatChoices.DIGITAL,
+        max_length=20,
     )
-    producer = models.CharField(max_length=250, null=False)
-    release_date = models.CharField(max_length=10, null=True)
-    status = models.CharField(
-        max_length=20, default="no", choices=STATUS_CHOICES, null=False
-    )
-    returned_date = models.DateTimeField(
-        default=None, editable=True, blank=True, null=True
-    )
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(
-        default=None, editable=True, blank=True, null=True
-    )
+    producer = models.CharField(max_length=150, null=False)
+    synopsis = models.TextField()
+    edition = models.CharField(max_length=20)
+    released_at = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField()
 
     class Meta:
-        verbose_name = "Game Item"
+        verbose_name = "Game item"
+        verbose_name_plural = "Games itens"
         ordering = ("-updated_at",)
 
     def __str__(self):
         return self.game_item_title
 
 
-class ItemModel(models.Model):
-    item = models.AutoField(primary_key=True, editable=False)
-    video_item = models.ForeignKey(
-        VideoItemModel,
-        default=None,
-        editable=False,
-        related_name="video_items",
-        blank=True,
-        null=True,
-        on_delete=models.CASCADE,
-    )
-    printed_item = models.ForeignKey(
-        PrintedItemModel,
-        default=None,
-        editable=False,
-        related_name="printed_items",
-        blank=True,
-        null=True,
-        on_delete=models.CASCADE,
-    )
-    game_item = models.ForeignKey(
-        GamesItemModel,
-        default=None,
-        editable=False,
-        related_name="game_items",
-        blank=True,
-        null=True,
-        on_delete=models.CASCADE,
-    )
-    created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(
-        default=None, editable=True, blank=True, null=True
-    )
+class UserItemsModel(models.Model):
+    owner = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    video_item = models.ForeignKey(VideosItemModel, on_delete=models.CASCADE)
+    printed_item = models.ForeignKey(PrintedItemModel, on_delete=models.CASCADE)
+    game_item = models.ForeignKey(GamesItemModel, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField()
 
     class Meta:
         verbose_name = "Item"
+        verbose_name_plural = "Items"
         ordering = ("-updated_at",)
