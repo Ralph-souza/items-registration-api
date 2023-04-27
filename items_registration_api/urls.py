@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, re_path
 
-from .docs import documentation_view
+from items_registration_api.docs import documentation_view
 
 urlpatterns = [
     re_path(r"admin/", admin.site.urls),

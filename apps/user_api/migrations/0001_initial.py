@@ -1,10 +1,10 @@
-import uuid
-
-import django.db.models.deletion
 from django.db import migrations, models
+import django.db.models.deletion
+import uuid
 
 
 class Migration(migrations.Migration):
+
     initial = True
 
     dependencies = [("user_auth", "0001_initial")]
@@ -29,6 +29,7 @@ class Migration(migrations.Migration):
                     "user_email",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
+                        related_name="email",
                         to="user_auth.userauthmodel",
                     ),
                 ),

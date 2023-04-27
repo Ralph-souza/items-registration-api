@@ -1,6 +1,6 @@
 from rest_framework import routers
 
-from .views import UserModelViewSet
+from apps.user_api.views import UserModelViewSet
 
 app_name = "user_api"
 

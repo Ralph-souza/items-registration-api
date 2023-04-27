@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import (GamesItemModel, PrintedItemModel, UserItemsModel,
+from apps.items_api.models import (GamesItemModel, PrintedItemModel, UserItemsModel,
                      VideosItemModel)
 
 admin.site.register(UserItemsModel)

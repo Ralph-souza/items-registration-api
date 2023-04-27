@@ -10,7 +10,7 @@ class UserModel(models.Model):
         primary_key=True, unique=True, default=uuid.uuid4, editable=False
     )
     user_name = models.CharField(max_length=250, null=False)
-    user_email = models.ForeignKey(UserAuthModel, on_delete=models.CASCADE)
+    user_email = models.ForeignKey(UserAuthModel, related_name="email", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

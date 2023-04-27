@@ -2,9 +2,9 @@ import uuid
 
 from django.db import models
 
+from apps.user_api.models import UserModel
 from apps.items_api.models import (GamesItemModel, PrintedItemModel,
                                    VideosItemModel)
-from apps.user_api.models import UserModel
 
 
 class LoanerModel(models.Model):

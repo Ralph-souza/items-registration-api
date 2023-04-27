@@ -1,9 +1,10 @@
 from django.db import models
 
+from apps.user_api.models import UserModel
+
 from apps.items_api.choices import (GamesFormatChoices, PrintedFormatChoices,
                                     PrintedTypeChoices, VideoFormatChoices,
                                     VideoTypeChoices)
-from apps.user_api.models import UserModel
 
 
 class VideosItemModel(models.Model):

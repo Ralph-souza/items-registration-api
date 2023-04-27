@@ -1,13 +1,13 @@
-import uuid
-
-import django.db.models.deletion
 from django.db import migrations, models
+import django.db.models.deletion
+import uuid
 
 
 class Migration(migrations.Migration):
+
     initial = True
 
-    dependencies = [("items_api", "0001_initial"), ("user_api", "0001_initial")]
+    dependencies = [("user_api", "0001_initial"), ("items_api", "0001_initial")]
 
     operations = [
         migrations.CreateModel(

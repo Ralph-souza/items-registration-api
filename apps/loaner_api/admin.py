@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import LoanerModel
+from apps.loaner_api.models import LoanerModel
 
 admin.site.register(LoanerModel)
