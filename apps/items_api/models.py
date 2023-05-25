@@ -2,7 +2,7 @@ from django.db import models
 
 from apps.user_api.models import UserModel
 
-from apps.items_api.choices import (GamesFormatChoices, PrintedFormatChoices,
+from apps.items_api.choices import (GamesFormatChoices, GamesPlatformChoices, PrintedFormatChoices,
                                     PrintedTypeChoices, VideoFormatChoices,
                                     VideoTypeChoices)
 
@@ -22,7 +22,7 @@ class VideosItemModel(models.Model):
     synopsis = models.TextField()
     released_at = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Video item"
@@ -48,10 +48,10 @@ class PrintedItemModel(models.Model):
     )
     author = models.CharField(max_length=150, null=False)
     synopsis = models.TextField()
-    edition = models.CharField(max_length=20)
+    edition = models.CharField(max_length=50)
     released_at = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Printed item"
@@ -70,12 +70,17 @@ class GamesItemModel(models.Model):
         default=GamesFormatChoices.DIGITAL,
         max_length=20,
     )
+    platform = models.CharField(
+        choices=GamesPlatformChoices.choices,
+        default=GamesPlatformChoices.PLAYSTATION_4,
+        max_length=100
+    )
     producer = models.CharField(max_length=150, null=False)
     synopsis = models.TextField()
-    edition = models.CharField(max_length=20)
+    edition = models.CharField(max_length=250)
     released_at = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Game item"
@@ -93,7 +98,7 @@ class UserItemsModel(models.Model):
     game_item = models.ForeignKey(GamesItemModel, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = "Item"

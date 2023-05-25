@@ -4,7 +4,7 @@ from apps.loaner_api.models import LoanerModel, ItemsLoanedModel, LoanHistory
 
 
 class LoanerModelSerializer(serializers.ModelSerializer):
-    id = serializers.UUIDField(source="loaner")
+    id = serializers.CharField(source="loaner", required=False)
     name = serializers.CharField(source="loaner_name", max_length=250)
     email = serializers.EmailField(source="loaner_email")
     phone = serializers.CharField(source="loaner_phone", max_length=20)
@@ -12,13 +12,13 @@ class LoanerModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LoanerModel
-        read_only_fields = (
+        fields = [
             "id",
             "name",
             "email",
             "phone",
             "created_at",
-        )
+        ]
 
 
 class ItemsLoanedModelSerializer(serializers.ModelSerializer):

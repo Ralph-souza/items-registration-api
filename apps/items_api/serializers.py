@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from apps.items_api.models import (GamesItemModel, PrintedItemModel, UserItemsModel,
-                     VideosItemModel)
+from apps.items_api.models import (GamesItemModel, PrintedItemModel, UserItemsModel, VideosItemModel)
 
 
 class VideoItemModelSerializer(serializers.ModelSerializer):
@@ -67,6 +66,7 @@ class GameItemModelSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "format",
+            "platform",
             "producer",
             "synopsis",
             "edition",
