@@ -3,24 +3,24 @@ from rest_framework import serializers
 from apps.items_api.models import (GamesItemModel, PrintedItemModel, UserItemsModel, VideosItemModel)
 
 
-class VideoItemModelSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(source="video_item", required=False)
-    title = serializers.CharField(source="video_item_title")
-    type = serializers.CharField(source="video_media_type")
-    format = serializers.CharField(source="video_format_type")
+class GameItemModelSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source="game_item", required=False)
+    title = serializers.CharField(source="game_item_title")
+    format = serializers.CharField(source="game_format_type")
     released_at = serializers.DateField(format="%d-%m-%Y", required=False)
     created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
     updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
 
     class Meta:
-        model = VideosItemModel
+        model = GamesItemModel
         fields = [
             "id",
             "title",
-            "type",
             "format",
-            "main_actor",
+            "platform",
+            "producer",
             "synopsis",
+            "edition",
             "released_at",
             "created_at",
             "updated_at",
@@ -52,38 +52,41 @@ class PrintedItemModelSerializer(serializers.ModelSerializer):
         ]
 
 
-class GameItemModelSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(source="game_item", required=False)
-    title = serializers.CharField(source="game_item_title")
-    format = serializers.CharField(source="game_format_type")
+class VideoItemModelSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source="video_item", required=False)
+    title = serializers.CharField(source="video_item_title")
+    type = serializers.CharField(source="video_media_type")
+    format = serializers.CharField(source="video_format_type")
     released_at = serializers.DateField(format="%d-%m-%Y", required=False)
     created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
     updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
 
     class Meta:
-        model = GamesItemModel
+        model = VideosItemModel
         fields = [
             "id",
             "title",
+            "type",
             "format",
-            "platform",
-            "producer",
+            "main_actor",
             "synopsis",
-            "edition",
             "released_at",
             "created_at",
             "updated_at",
         ]
 
 
-class ItemsModelSerializer(serializers.Serializer):
-    created_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
-    updated_at = serializers.DateTimeField(format="%d-%m-%Y %H:%M", required=False)
+class UserItemsModelSerializer(serializers.ModelSerializer):
+    games = GameItemModelSerializer(many=True)
+    printed = PrintedItemModelSerializer(many=True)
+    videos = VideoItemModelSerializer(many=True)
 
     class Meta:
         model = UserItemsModel
         fields = [
+            "owner",
+            "games",
+            "printed",
+            "video",
             "quantity",
-            "created_at",
-            "updated_at",
         ]

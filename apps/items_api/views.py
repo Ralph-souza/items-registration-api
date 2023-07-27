@@ -2,10 +2,13 @@ from drf_jsonmask.views import OptimizedQuerySetMixin
 
 from rest_framework.viewsets import ModelViewSet
 
-from apps.items_api.models import (GamesItemModel, PrintedItemModel, UserItemsModel,
-                     VideosItemModel)
-from apps.items_api.serializers import (GameItemModelSerializer, ItemsModelSerializer,
-                          PrintedItemModelSerializer, VideoItemModelSerializer)
+from apps.items_api.models import (GamesItemModel, PrintedItemModel, UserItemsModel, VideosItemModel)
+from apps.items_api.serializers import (
+    GameItemModelSerializer,
+    UserItemsModelSerializer,
+    PrintedItemModelSerializer,
+    VideoItemModelSerializer
+)
 
 
 class VideoItemsModelViewSet(OptimizedQuerySetMixin, ModelViewSet):
@@ -25,7 +28,7 @@ class GameItemsModelViewSet(OptimizedQuerySetMixin, ModelViewSet):
     serializer_class = GameItemModelSerializer
 
 
-class ItemsModelViewSet(OptimizedQuerySetMixin, ModelViewSet):
+class UserItemsModelViewSet(OptimizedQuerySetMixin, ModelViewSet):
     http_method_names = ["get"]
-    serializer_class = ItemsModelSerializer
+    serializer_class = UserItemsModelSerializer
     queryset = UserItemsModel.objects.all()
